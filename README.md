@@ -1,4 +1,7 @@
-![Frontman Logo](media/logos/_logo.svg)
+<div align="center">
+  <img src="media/logos/_logo.svg" alt="FrontmanLogo"/>
+</div>
+
 
 # Frontman
 
