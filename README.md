@@ -4,31 +4,6 @@
 
 The AI-Powered VS Code Extension That Makes API Testing Effortless
 
-## Installation & Setup
-
-### Quick Start (2 minutes)
-```bash
-git clone https://gitlab.com/abbasmir12/frontman.git
-cd frontman
-npm install
-npm run compile
-```
-
-### Run in Development Mode
-```bash
-# Compile and watch for changes
-npm run watch
-
-# In another terminal, launch extension
-code --extensionDevelopmentPath=$(pwd) .
-```
-
-### Package for Publishing
-```bash
-npm run package
-# Creates .vsix file in the root directory
-```
-
 ## What Makes This Special?
 
 AI-Powered Request Generation: Just tell the AI what you want to do - "Analyze NASA’s Astronomy Picture of the Day API — make a GET request for today’s image and it's metadata" - and watch as it generates the complete cURL command with all headers, authentication, and body content filled in automatically.
@@ -222,6 +197,31 @@ Every request and response is automatically saved with:
     }
   ]
 }
+```
+
+## Installation & Setup
+
+### Quick Start (2 minutes)
+```bash
+git clone https://gitlab.com/abbasmir12/frontman.git
+cd frontman
+npm install
+npm run compile
+```
+
+### Run in Development Mode
+```bash
+# Compile and watch for changes
+npm run watch
+
+# In another terminal, launch extension
+code --extensionDevelopmentPath=$(pwd) .
+```
+
+### Package for Publishing
+```bash
+npm run package
+# Creates .vsix file in the root directory
 ```
 
 ## Troubleshooting
