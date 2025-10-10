@@ -1,6 +1,33 @@
+![Frontman Logo](media/logos/_logo.svg)
+
 # Frontman
 
 The AI-Powered VS Code Extension That Makes API Testing Effortless
+
+## Installation & Setup
+
+### Quick Start (2 minutes)
+```bash
+git clone https://gitlab.com/abbasmir12/frontman.git
+cd frontman
+npm install
+npm run compile
+```
+
+### Run in Development Mode
+```bash
+# Compile and watch for changes
+npm run watch
+
+# In another terminal, launch extension
+code --extensionDevelopmentPath=$(pwd) .
+```
+
+### Package for Publishing
+```bash
+npm run package
+# Creates .vsix file in the root directory
+```
 
 ## What Makes This Special?
 
