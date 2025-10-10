@@ -1,0 +1,103 @@
+body {
+    font-family: var(--vscode-font-family); /* Use VS Code font variable */
+    line-height: 1.6;
+    padding: 20px;
+    color: var(--vscode-editor-foreground);
+    background-color: var(--vscode-editor-background);
+}
+
+h1, h2, h3 {
+    color: var(--vscode-foreground);
+}
+
+#request-section, #response-section, #codegen-output {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid var(--vscode-panel-border);
+    border-radius: 5px;
+    background-color: var(--vscode-sideBar-background);
+}
+
+label {
+    display: inline-block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"], textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border: 1px solid var(--vscode-input-border);
+    background-color: var(--vscode-input-background);
+    color: var(--vscode-input-foreground);
+    font-family: var(--vscode-editor-font-family); /* Use editor font for inputs */
+    font-size: var(--vscode-editor-font-size);
+}
+
+input[type="text"]:focus, textarea:focus {
+    outline: 1px solid var(--vscode-focusBorder);
+    border-color: var(--vscode-focusBorder);
+}
+
+button {
+    padding: 10px 15px;
+    margin-right: 10px;
+    background-color: var(--vscode-button-background);
+    color: var(--vscode-button-foreground);
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: var(--vscode-button-hoverBackground);
+}
+
+button:active {
+    background-color: var(--vscode-button-separator);
+}
+
+pre {
+    background-color: var(--vscode-editor-background);
+    color: var(--vscode-editor-foreground);
+    padding: 10px;
+    border-radius: 4px;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap;
+    word-wrap: break-word;
+    margin-bottom: 10px;
+}
+
+code {
+    font-family: var(--vscode-editor-font-family);
+    font-size: var(--vscode-editor-font-size);
+    /* Basic syntax highlighting styles can go here, or use a library */
+    /* E.g., color: var(--vscode-editor-stringForeground); */
+}
+
+/* Basic syntax highlighting simulation - replace with a library */
+/* These classes need to be applied by your syntax highlighter */
+pre .string { color: var(--vscode-editor-stringForeground); }
+pre .number { color: var(--vscode-editor-numberForeground); }
+pre .boolean { color: var(--vscode-editor-keywordForeground); } /* Using keyword color for boolean */
+pre .key { color: var(--vscode-editor-propertyForeground); }
+
+
+/* Layout improvements */
+#request-section > div,
+#response-section > div {
+    margin-bottom: 15px;
+}
+
+#codegen-output {
+    position: relative;
+}
+
+#codegen-output button {
+     margin-top: 5px;
+}

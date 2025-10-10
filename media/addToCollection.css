@@ -1,0 +1,687 @@
+body {
+  color: #e0e0e0;
+  font-family: 'Segoe UI', 'Fira Code', 'Consolas', monospace;
+  margin: 0;
+  padding: 0;
+}
+
+.add-collection-container {
+  display: flex;
+  gap: 32px;
+  padding: 32px 48px;
+}
+
+.panel-1 {
+  border: 1px solid #6767673d;
+  margin-top: 42px;
+}
+
+
+.collection-list-panel,
+.request-config-panel {
+  background: #23272e00;
+  border-radius: 8px;
+  padding: 24px 24px 16px 24px;
+  min-width: 386px;
+  /* max-width: 365px; */
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  box-shadow: none;
+  height: 400px;
+  margin-left: -20px;
+}
+
+.request-config-panel {
+  min-width: 400px;
+  max-width: 700px;
+}
+
+.section-header,
+.request-config-panel h2 {
+  font-size: 1.2em;
+  font-weight: 600;
+  color: #b3b8c3;
+  margin-bottom: 12px;
+}
+
+input,
+select,
+textarea {
+  background: #181a1b00;
+  color: #e0e0e0;
+  border: 1px solid #292d32;
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-size: 1em;
+  margin-bottom: 8px;
+  outline: none;
+  transition: border 0.15s;
+  box-shadow: none;
+  resize: vertical;
+  min-height: 18px;
+  max-height: 200px;
+}
+
+textarea {
+  min-height: 40px;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border: 1.5px solid #1677ff;
+}
+
+.primary-btn {
+  background: #1677ff00;
+  color: #fff;
+  border: 1px solid white;
+  border-radius: 6px;
+  padding: 10px 22px;
+  font-size: 1em;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 17px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  transition: background 0.15s;
+  box-shadow: none;
+}
+
+.primary-btn:hover {
+  background: #125fcc;
+}
+
+.request-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0px 6px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  transition: border 0.15s, background 0.15s;
+  cursor: pointer;
+  box-shadow: none;
+}
+
+.request-item:hover {
+  border: 1px solid #1677ff00;
+  background: #232b36;
+  border-radius: 2px;
+}
+
+.request-method {
+  font-weight: bold;
+  font-size: 0.95em;
+  margin-right: 4px;
+}
+
+.method-GET {
+  color: #1ecb81;
+}
+
+.method-POST {
+  color: #1677ff;
+}
+
+.method-DELETE {
+  color: #ff4d4f;
+}
+
+.method-PUT {
+  color: #faad14;
+}
+
+.method-PATCH {
+  color: #722ed1;
+}
+
+.method-HEAD,
+.method-OPTIONS {
+  color: #b3b8c3;
+}
+
+.request-name {
+  flex: 1 1 auto;
+  font-size: 1em;
+  color: #e0e0e0;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.form-group label {
+  font-size: 1em;
+  font-weight: 500;
+  color: #b3b8c3;
+  margin-top: 6px;
+
+}
+
+.advanced-settings {
+  margin-top: 10px;
+  background: #23272e00;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 14px;
+  color: #b3b8c3;
+  font-size: 1em;
+  box-shadow: none;
+}
+
+.advanced-settings[open] {
+  border-color: #1677ff;
+}
+
+.advanced-settings summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: #b3b8c3;
+  outline: none;
+}
+
+#filter-requests {
+  margin-top: 8px;
+}
+
+/* Custom checkbox styling */
+.request-item input[type='checkbox'] {
+  accent-color: #ffe816;
+  width: 16px;
+  height: 16px;
+  margin-right: 6px;
+  outline: none;
+  position: relative;
+  top: 4px;
+}
+
+/* Remove box-shadow from everything */
+*,
+*:before,
+*:after {
+  box-shadow: none !important;
+}
+
+div#request-list {
+  margin-left: 30px;
+  margin-top: 20px;
+  overflow-y: scroll;
+  height: 100%;
+}
+
+/* Custom Dropdown Styles */
+.custom-dropdown {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.custom-dropdown .dropdown-selected {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #181a1b00;
+  border: 1px solid #292d32;
+  border-radius: 6px;
+  cursor: pointer;
+  user-select: none;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+  padding: 8px 10px;
+  font-size: 1em;
+}
+
+.custom-dropdown.open .dropdown-selected {
+  outline: none;
+  border-color: #1677ff;
+  box-shadow: 0 0 0 1px #1677ff;
+}
+
+.dropdown-arrow {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #b3b8c3;
+  transition: transform 0.2s ease-in-out;
+}
+
+.custom-dropdown.open .dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  width: 100%;
+  min-width: max-content;
+  background-color: #23272e;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  list-style: none;
+  padding: 4px 0;
+  margin: 0;
+  z-index: 1000;
+}
+
+.dropdown-menu.hidden {
+  display: none;
+}
+
+.dropdown-menu li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  cursor: pointer;
+  border-radius: 3px;
+  font-weight: normal;
+  font-size: 1em;
+  transition: background-color 0.1s;
+}
+
+.dropdown-menu li:not([disabled]):hover {
+  background-color: #00000026;
+}
+
+.dropdown-menu li[disabled] {
+  color: #888;
+  cursor: not-allowed;
+}
+
+.dropdown-menu li.active {
+  background-color: #1677ff;
+  color: #fff;
+}
+
+/* Hierarchical dropdown styles */
+.dropdown-item {
+  position: relative;
+}
+
+.dropdown-item:not(.is-expanded) > .dropdown-menu-subtree {
+    display: none;
+}
+
+
+
+.dropdown-menu-root, .dropdown-menu-subtree {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    position: relative;
+}
+
+.dropdown-menu-root > .dropdown-item > .dropdown-menu-subtree::before {
+    display: none;
+}
+
+.dropdown-menu-subtree::before {
+    content: '';
+    position: absolute;
+    left: 25px; /* Adjust to align with the chevron */
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dropdown-item {
+    position: relative;
+}
+
+.dropdown-item::before {
+    content: '';
+    position: absolute;
+    left: 25px; /* Should match the vertical line's left position */
+    top: 25px; /* Vertically center with the item content */
+    width: 10px; /* Length of the horizontal line */
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dropdown-item-content {
+  display: flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 2px 12px 2px 25px; /* Adjusted padding-left */
+  cursor: pointer;
+  transition: background-color 0.15s;
+  border-radius: 5px;
+  gap: 2px;
+  position: relative;
+}
+
+.dropdown-item-content:hover {
+  background: rgba(255, 255, 255, 0);
+}
+
+.dropdown-item.active .dropdown-item-content {
+  background: rgba(255, 255, 255, 0);
+  color: var(--vscode-list-activeSelectionForeground, #fff);
+}
+
+
+
+.dropdown-chevron {
+  font-size: 15px;
+  margin-right: 6px;
+  color: var(--vscode-descriptionForeground);
+  flex-shrink: 0;
+  width: 18px;
+  text-align: center;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.dropdown-folder-icon {
+  font-size: 15px;
+  margin-right: 8px;
+  color: var(--vscode-symbolIcon-folderForeground);
+  flex-shrink: 0;
+  display: inline-block;
+}
+
+.dropdown-collection-icon {
+  font-size: 15px;
+  margin-right: 8px;
+  color: var(--vscode-symbolIcon-classForeground);
+  flex-shrink: 0;
+  display: inline-block;
+}
+
+.dropdown-collection-label {
+  font-weight: bold;
+  color: var(--vscode-foreground);
+  font-size: 14px;
+}
+
+.dropdown-folder-label {
+  font-style: italic;
+  color: var(--vscode-descriptionForeground);
+  font-size: 13px;
+}
+
+.dropdown-item-content span {
+  flex: 1;
+  white-space: nowrap;
+  overflow: visible;
+  text-overflow: unset;
+}
+
+.dropdown-item {
+  padding: 0;
+  margin: 0;
+  background: none;
+  border: none;
+}
+
+.dropdown-item:not(:last-child) {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.dropdown-menu {
+  border-radius: 8px;
+  box-shadow: 0 4px 6px 0 #000000 !important;
+  background: #0c1016;
+  padding: 4px 0;
+  min-width: 260px;
+  max-width: 600px;
+  max-height: 350px;
+  overflow-y: auto;
+}
+
+/* Folder items with different styling */
+.dropdown-item[data-type="folder"] .dropdown-item-content {
+  font-style: italic;
+}
+
+.dropdown-item[data-type="folder"] .dropdown-item-content i {
+  color: #faad14 !important;
+}
+
+.dropdown-item.active[data-type="folder"] .dropdown-item-content i {
+  color: white !important;
+}
+
+/* Method color classes */
+.method-get {
+  color: #1ecb81;
+  font-weight: bold;
+}
+
+.method-post {
+  color: #1677ff;
+  font-weight: bold;
+}
+
+.method-delete {
+  color: #ff4d4f;
+  font-weight: bold;
+}
+
+.method-put {
+  color: #faad14;
+  font-weight: bold;
+}
+
+.method-patch {
+  color: #722ed1;
+  font-weight: bold;
+}
+
+.method-head,
+.method-options {
+  color: #b3b8c3;
+  font-weight: bold;
+}
+
+.request-item.overline .request-name {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+/* Remove blue background on active/focused dropdown items */
+.custom-dropdown .dropdown-menu li:focus,
+.custom-dropdown .dropdown-menu li:active,
+.custom-dropdown .dropdown-menu li.active {
+  background: #232b3600;
+  color: #e0e0e0 !important;
+  outline: none;
+}
+
+/* Hide only the scrollbar arrows (buttons) for the request list */
+#request-list::-webkit-scrollbar-button {
+  display: none;
+}
+
+/* Aggressively hide all scrollbar buttons, corners, and tracks for all scrollbars */
+::-webkit-scrollbar-button,
+::-webkit-scrollbar-corner,
+::-webkit-scrollbar-track-piece,
+::-webkit-scrollbar-track {
+  display: none !important;
+  background: transparent !important;
+  height: 0 !important;
+  width: 0 !important;
+}
+
+/* Only show the scrollbar thumb */
+::-webkit-scrollbar {
+  width: 8px;
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #232b36;
+  border-radius: 4px;
+}
+
+/* Key-Value Editor Styles for Collection UI */
+.kv-editor {
+  margin-bottom: 12px;
+  border: 1px solid #292d32;
+  border-radius: 6px;
+  background: #181a1b00;
+  padding: 0;
+  overflow: hidden;
+}
+
+.kv-editor-header {
+  display: flex;
+  font-weight: 600;
+  color: #b3b8c3;
+  border-bottom: 1px solid #292d32;
+  padding: 6px 8px;
+  background: #20232a00;
+  margin-right: -189px;
+}
+
+.kv-cell {
+  flex: 1 1 0;
+  padding: 0 8px;
+}
+
+.kv-editor-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 0;
+}
+
+.kv-row {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  border-bottom: 1px solid #23272e;
+  background: #181a1b00;
+}
+
+.kv-row:last-child {
+  border-bottom: none;
+}
+
+.kv-key,
+.kv-value {
+  flex: 1 1 0;
+  background: #23272e00;
+  color: #e0e0e0;
+  border: none;
+  border-right: 1px solid #23272e;
+  border-radius: 0;
+  padding: 8px 10px;
+  font-size: 1em;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.kv-key {
+  border-left: none;
+}
+
+.kv-value {
+  border-right: none;
+}
+
+.kv-key:focus,
+.kv-value:focus {
+  border: none !important;
+  border-right: 1px solid #23272e !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background: inherit;
+}
+
+.kv-row .remove-row {
+  display: none;
+}
+
+.kv-editor-footer {
+  display: none;
+}
+
+.auth-details-box {
+  position: absolute;
+  right: 110%;
+  /* Place box to the left of dropdown */
+  min-width: 260px;
+  z-index: 10;
+  overflow: hidden;
+  background: #23272e00;
+  border: 0.5px solid #fffcf526;
+  border-radius: 8px;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 18px 20px 10px 20px;
+  box-shadow: 0 2px 16px 0 #00000033;
+  opacity: 0;
+  display: none;
+  /* Border animation using clip-path, reveal from right */
+  clip-path: inset(0 100% 0 0 round 8px);
+  transition:
+    opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    clip-path 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.auth-details-box.visible {
+  display: block;
+  opacity: 1;
+}
+
+.auth-details-box.animated {
+  clip-path: inset(0 0 0 0 round 8px);
+  /* Reveal from right */
+}
+
+.auth-details-connector {
+  position: absolute;
+  right: 100%;
+  /* Attach to left of dropdown */
+  width: 0;
+  height: 2px;
+  background: #f5f5f436;
+  z-index: 11;
+  transform: translateY(-50%);
+  transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 1;
+  pointer-events: none;
+}
+
+.auth-details-connector.animated {
+  width: 39px;
+  /* Animate to full width */
+}
+
+.auth-details-box .auth-field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12px;
+}
+
+.auth-details-box .auth-field label {
+  color: #b3b8c3;
+  font-size: 1em;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.auth-details-box .auth-field input {
+  background: #181a1b00;
+  color: #e0e0e0;
+  border: 1px solid #292d32;
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-size: 1em;
+  outline: none;
+  margin-bottom: 0;
+  transition: border 0.15s;
+}
+
+.auth-details-box .auth-field input:focus {
+  border: 1.5px solid #1677ff;
+}

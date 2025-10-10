@@ -1,0 +1,177 @@
+{
+  "name": "mir",
+  "displayName": "universal-api-navigator",
+  "description": "A universal API explorer and client for REST, gRPC, and GraphQL—right inside VS Code.",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.101.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+  "configuration": {
+    "type": "object",
+    "title": "Frontman",
+    "properties": {
+      "universalApiNavigator.aiConfig": {
+        "type": "object",
+        "description": "AI configuration for generating cURL commands from natural language prompts",
+        "properties": {
+          "provider": {
+            "type": "string",
+            "description": "AI provider to use for generating cURL commands",
+            "default": "huggingface",
+            "enum": ["huggingface"]
+          },
+          "model": {
+            "type": "string",
+            "description": "AI model to use for generating cURL commands",
+            "default": "openai/gpt-oss-120b",
+            "enum": ["openai/gpt-oss-120b"]
+          },
+          "apiKey": {
+            "type": "string",
+            "description": "API key for the AI provider",
+            "default": ""
+          }
+        },
+        "default": {
+          "provider": "huggingface",
+          "model": "openai/gpt-oss-120b",
+          "apiKey": ""
+        }
+      }
+    }
+  },
+  "viewsContainers": {
+    "activitybar": [
+      {
+        "id": "universal-api-navigator-sidebar",
+        "title": "Frontman",
+        "icon": "media/logos/_logo.svg"
+      }
+    ]
+  },
+  "views": {
+    "universal-api-navigator-sidebar": [
+      {
+        "type": "webview",
+        "id": "universalApiNavigator.sidebarView", 
+        "name": "Frontman",
+        "contextualTitle": "Frontman",
+        "icon": "media/http.svg"
+      }
+
+    ]
+  },
+    "commands": [
+      {
+        "command": "universalApiNavigator.openTreeView",
+        "title": "Open API Navigator"
+      },
+      {
+        "command": "universalApiNavigator.parseSchema",
+        "title": "Parse API Schema File",
+        "icon": "$(file-code)"
+      },
+      {
+        "command": "universalApiNavigator.openRequestEditor",
+        "title": "Open Request Editor",
+        "icon": "$(edit)",
+        "category": "API Navigator"
+      },
+      {
+        "command": "universalApiNavigator.runRequest",
+        "title": "Run API Request",
+        "icon": "$(play)",
+        "category": "Frontman"
+      },
+      {
+        "command": "universalApiNavigator.generateCodeStub",
+        "title": "Generate Code Stub",
+        "icon": "$(code)",
+        "category": "Frontman"
+      },
+      {
+        "command": "universalApiNavigator.openRawRequest",
+        "title": "Open Raw Request UI"
+      },
+      {
+        "command": "universalApiNavigator.openManageEnvironmentPanel",
+        "title": "Manage Environments",
+        "icon": "$(server-environment)",
+        "category": "API Navigator"
+      },
+      {
+        "command": "universalApiNavigator.addTestHistory",
+        "title": "Add Test History Entries",
+        "category": "API Navigator"
+      }
+    ],
+    "menus": {
+      "commandPalette": [
+        {
+          "command": "universalApiNavigator.openManageEnvironmentPanel",
+          "when": "true"
+        },
+        {
+          "command": "universalApiNavigator.parseSchema"
+        },
+        {
+          "command": "universalApiNavigator.addTestHistory"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "universalApiNavigator.openRequestEditor",
+          "when": "view == universalApiNavigator.apiTreeView && viewItem == method",
+          "group": "inline"
+        },
+        {
+          "command": "universalApiNavigator.generateCodeStub",
+          "when": "view == universalApiNavigator.apiTreeView && viewItem == method",
+          "group": "inline"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "test": "npm run compile-tests && npm run run-tests"
+  },
+  "devDependencies": {
+    "@types/glob": "^8.1.0",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "16.x",
+    "@types/vscode": "^1.80.0",
+    "@vscode/test-electron": "^2.3.2",
+    "glob": "^8.1.0",
+    "mocha": "^10.2.0",
+    "rimraf": "^5.0.0",
+    "ts-loader": "^9.4.3",
+    "typescript": "^5.1.3",
+    "webpack": "^5.88.1",
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "@grpc/grpc-js": "^1.9.0",
+    "@grpc/proto-loader": "^0.7.8",
+    "@vscode/codicons": "^0.0.36",
+    "axios": "^1.4.0",
+    "graphql": "^16.7.1",
+    "graphql-request": "^6.1.0",
+    "node-fetch": "^3.3.2",
+    "openapi3-ts": "^4.4.0",
+    "protobufjs": "^7.2.4",
+    "supports-color": "^10.0.0",
+    "swagger-parser": "^10.0.3"
+  }
+}

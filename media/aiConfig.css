@@ -1,0 +1,489 @@
+/* Utility Classes */
+.hidden {
+    display: none !important;
+}
+
+/* AI Configuration Panel Styles */
+:root {
+    --ai-config-bg: var(--vscode-editor-background, #1e1e1e);
+    --ai-config-card-bg: var(--vscode-sideBar-background, #252526);
+    --ai-config-border: var(--vscode-panel-border, #3c3c3c);
+    --ai-config-text: var(--vscode-foreground, #cccccc);
+    --ai-config-text-secondary: var(--vscode-descriptionForeground, #cccccc99);
+    --ai-config-input-bg: var(--vscode-input-background, #3c3c3c);
+    --ai-config-input-border: var(--vscode-input-border, #3c3c3c);
+    --ai-config-input-focus: var(--vscode-focusBorder, #007acc);
+    --ai-config-button-primary: var(--vscode-button-background, #0e639c);
+    --ai-config-button-primary-hover: var(--vscode-button-hoverBackground, #1177bb);
+    --ai-config-button-secondary: var(--vscode-button-secondaryBackground, #3a3d41);
+    --ai-config-button-secondary-hover: var(--vscode-button-secondaryHoverBackground, #45494e);
+    --ai-config-success: var(--vscode-terminal-ansiGreen, #4ade80);
+    --ai-config-error: var(--vscode-terminal-ansiRed, #f87171);
+    --ai-config-warning: var(--vscode-terminal-ansiYellow, #fbbf24);
+    --ai-config-link: var(--vscode-textLink-foreground, #4da6ff);
+    --ai-config-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.ai-config-container {
+    font-family: var(--vscode-font-family, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
+    font-size: var(--vscode-font-size, 13px);
+    background: var(--ai-config-bg);
+    color: var(--ai-config-text);
+    padding: 24px;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.5;
+}
+
+/* Header Section */
+.ai-config-header {
+    text-align: center;
+    margin-bottom: 32px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--ai-config-border);
+}
+
+.ai-config-header h1 {
+    margin: 0 0 8px 0;
+    font-size: 20px;
+    font-weight: 600;
+    background: linear-gradient(135deg, #00D4AA 0%, #00B4AA 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline-block;
+}
+
+.ai-config-header p {
+    margin: 0;
+    color: var(--ai-config-text-secondary);
+    font-size: 14px;
+}
+
+/* Form Styles */
+.ai-config-form {
+    background: var(--ai-config-card-bg);
+    border: 1px solid var(--ai-config-border);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 32px;
+    box-shadow: var(--ai-config-shadow);
+}
+
+.form-group {
+    margin-bottom: 24px;
+}
+
+.form-group:last-child {
+    margin-bottom: 0;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--ai-config-text);
+    font-size: 13px;
+}
+
+/* Custom Dropdown Styles */
+.custom-dropdown {
+    position: relative;
+    width: 100%;
+}
+
+.dropdown-selected {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--ai-config-input-bg);
+    border: 1px solid var(--ai-config-input-border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    user-select: none;
+}
+
+.dropdown-selected:hover {
+    border-color: var(--ai-config-input-focus);
+    background: rgba(0, 122, 204, 0.05);
+}
+
+.dropdown-selected:focus {
+    outline: none;
+    border-color: var(--ai-config-input-focus);
+    box-shadow: 0 0 0 2px rgba(0, 122, 204, 0.2);
+}
+
+.custom-dropdown.open .dropdown-selected {
+    border-color: var(--ai-config-input-focus);
+    box-shadow: 0 0 0 2px rgba(0, 122, 204, 0.2);
+}
+
+.dropdown-arrow {
+    width: 0;
+    height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 4px solid var(--ai-config-text-secondary);
+    transition: transform 0.2s ease;
+}
+
+.custom-dropdown.open .dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    right: 0;
+    background: var(--ai-config-card-bg);
+    border: 1px solid var(--ai-config-border);
+    border-radius: 6px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    list-style: none;
+    padding: 4px 0;
+    margin: 0;
+    z-index: 1000;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.dropdown-menu.hidden {
+    display: none;
+}
+
+.dropdown-menu li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    font-size: 13px;
+    color: var(--ai-config-text);
+}
+
+.dropdown-menu li:hover {
+    background: rgba(0, 122, 204, 0.1);
+}
+
+.dropdown-menu li.active {
+    background: rgba(0, 122, 204, 0.15);
+    color: var(--ai-config-link);
+}
+
+.dropdown-menu-checkmark {
+    visibility: hidden;
+    width: 16px;
+    color: var(--ai-config-link);
+    font-weight: bold;
+}
+
+.dropdown-menu li.active .dropdown-menu-checkmark {
+    visibility: visible;
+}
+
+/* Input with Button */
+.input-with-button {
+    position: relative;
+    display: flex;
+    gap: 8px;
+    align-items: stretch;
+}
+
+.input-with-button input {
+    flex-grow: 1;
+    background: var(--ai-config-input-bg);
+    border: 1px solid var(--ai-config-input-border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    color: var(--ai-config-text);
+    font-size: 13px;
+    transition: all 0.2s ease;
+}
+
+.input-with-button input:focus {
+    outline: none;
+    border-color: var(--ai-config-input-focus);
+    box-shadow: 0 0 0 2px rgba(0, 122, 204, 0.2);
+}
+
+.input-with-button input::placeholder {
+    color: var(--ai-config-text-secondary);
+}
+
+.toggle-visibility-btn {
+    background: var(--ai-config-button-secondary);
+    border: 1px solid var(--ai-config-input-border);
+    border-radius: 6px;
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    color: var(--ai-config-text-secondary);
+    min-width: 40px;
+}
+
+.toggle-visibility-btn:hover {
+    background: var(--ai-config-button-secondary-hover);
+    color: var(--ai-config-text);
+}
+
+/* Help Text and Links */
+.input-help {
+    margin-top: 6px;
+}
+
+.help-link {
+    color: var(--ai-config-link);
+    text-decoration: none;
+    font-size: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.help-link:hover {
+    text-decoration: underline;
+}
+
+/* Test Configuration Section */
+.test-btn {
+    background: transparent;
+    color: #ffffff;
+    border: .5px solid white;
+    border-radius: 6px;
+    padding: 10px 20px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 36px;
+}
+
+.test-btn:hover:not(:disabled) {
+    background: linear-gradient(135deg, #00C4A0 0%, #00A499 100%);
+    transform: translateY(-1px);
+}
+
+.test-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.btn-spinner {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: #ffffff;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Test Result */
+.test-result {
+    margin-top: 12px;
+    padding: 10px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.test-result.hidden {
+    display: none;
+}
+
+.test-result.success {
+    background: rgba(74, 222, 128, 0.1);
+    color: var(--ai-config-success);
+    border: 1px solid rgba(74, 222, 128, 0.3);
+}
+
+.test-result.error {
+    background: rgba(248, 113, 113, 0.1);
+    color: var(--ai-config-error);
+    border: 1px solid rgba(248, 113, 113, 0.3);
+}
+
+/* Action Buttons */
+.form-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+    margin-top: 32px;
+    padding-top: 20px;
+    border-top: 1px solid var(--ai-config-border);
+}
+
+.primary-btn {
+    background: linear-gradient(135deg, #00D4AA 0%, #00B4AA 100%);
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 24px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-width: 100px;
+}
+
+.primary-btn:hover:not(:disabled) {
+    background: linear-gradient(135deg, #00C4A0 0%, #00A499 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 212, 170, 0.3);
+}
+
+.primary-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.secondary-btn {
+    background: var(--ai-config-button-secondary);
+    color: var(--ai-config-text);
+    border: 1px solid var(--ai-config-input-border);
+    border-radius: 6px;
+    padding: 10px 24px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-width: 100px;
+}
+
+.secondary-btn:hover {
+    background: var(--ai-config-button-secondary-hover);
+}
+
+/* Info Section */
+.ai-config-info {
+    background: var(--ai-config-card-bg);
+    border: 1px solid var(--ai-config-border);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: var(--ai-config-shadow);
+}
+
+.ai-config-info h3 {
+    margin: 0 0 16px 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--ai-config-text);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.ai-config-info h3:first-child {
+    color: var(--ai-config-link);
+}
+
+.ai-config-info ol {
+    margin: 0 0 24px 0;
+    padding-left: 20px;
+    color: var(--ai-config-text-secondary);
+}
+
+.ai-config-info li {
+    margin-bottom: 8px;
+    line-height: 1.6;
+}
+
+.ai-config-info p {
+    margin: 0;
+    color: var(--ai-config-text-secondary);
+    line-height: 1.6;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .ai-config-container {
+        padding: 16px;
+    }
+
+    .ai-config-header {
+        margin-bottom: 24px;
+    }
+
+    .ai-config-header h1 {
+        font-size: 18px;
+    }
+
+    .ai-config-form {
+        padding: 16px;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .primary-btn,
+    .secondary-btn {
+        width: 100%;
+    }
+}
+
+/* Animation for smooth appearance */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.ai-config-container {
+    animation: fadeInUp 0.3s ease-out;
+}
+
+/* Enhanced focus indicators */
+.custom-dropdown:focus-within .dropdown-selected,
+.input-with-button:focus-within input,
+.primary-btn:focus,
+.secondary-btn:focus,
+.test-btn:focus {
+    /* outline: 2px solid var(--ai-config-input-focus); */
+    outline-offset: 2px;
+}
+
+/* Loading state enhancements */
+.test-btn:disabled .btn-text {
+    opacity: 0.7;
+}
+
+/* Success/Error state animations */
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+.test-result.success {
+    animation: pulse 2s ease-in-out;
+}
+
+.test-result.error {
+    animation: pulse 2s ease-in-out;
+}

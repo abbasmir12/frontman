@@ -1,0 +1,1287 @@
+/* ========== Root Layout ==========*/
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--vscode-sideBar-background);
+  color: var(--vscode-foreground);
+  font-family: var(--vscode-font-family);
+  font-size: var(--vscode-font-size);
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.sidebar-root {
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+  gap: 16px;
+  height: 100%;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+/* ========== Profile + Header ==========*/
+.profile-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  background-color: var(--vscode-input-background);
+  border: 1px solid var(--vscode-input-border);
+  padding: 10px 14px 8px 14px;
+  border-radius: 8px;
+  font-weight: 500;
+  color: var(--vscode-input-foreground);
+  cursor: pointer;
+  margin-bottom: 10px;
+  transition: background 0.2s;
+  gap: 2px;
+}
+.profile-section:hover {
+  background-color: var(--vscode-inputOption-hoverBackground);
+}
+.profile-section .profile-meta {
+  font-size: 11px;
+  color: var(--vscode-descriptionForeground);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.profile-section .codicon-chevron-down {
+  align-self: flex-end;
+  margin-top: 2px;
+  font-size: 14px;
+}
+
+/* ========== New Request Button ==========*/
+.new-request-btn {
+  background-color: transparent;
+  color: var(--vscode-button-foreground);
+  border: 1px solid transparent;
+  border-radius: 6px;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.new-request-btn:hover {
+  border: 1px solid gray;
+}
+.new-request-btn .codicon {
+  font-size: 16px;
+}
+
+/* ========== Section Block ==========*/
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: var(--vscode-sideBarSectionHeader-background, #23272e);
+  border-radius: 4px;
+  margin-bottom: 12px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+  border: 1px solid var(--vscode-sideBarSectionHeader-border, #23272e);
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: var(--vscode-sideBarSectionHeader-foreground);
+  padding: 8px 8px 8px 12px;
+  cursor: pointer;
+  transition: color 0.2s ease, background 0.2s;
+  border-radius: 8px 8px 0 0;
+  background: var(--vscode-sideBarSectionHeader-background, #23272e);
+  border-bottom: 1px solid var(--vscode-sideBarSectionHeader-border, #23272e);
+  position: relative;
+}
+.section-header:hover {
+  color: #0582ff;
+  background: rgba(255, 0, 0, 0);
+}
+.section-header .codicon {
+  transition: transform 0.2s ease;
+  font-size: 16px;
+}
+.section.collapsed .section-header .codicon {
+  transform: rotate(-90deg);
+}
+.section-actions {
+  margin-left: auto;
+  display: flex;
+  gap: 4px;
+}
+.section-action-btn {
+  background: none;
+  border: none;
+  color: var(--vscode-sideBarSectionHeader-foreground);
+  cursor: pointer;
+  font-size: 15px;
+  padding: 2px 4px;
+  border-radius: 4px;
+  transition: background 0.15s, color 0.15s;
+}
+.section-action-btn:hover {
+  background: var(--vscode-list-hoverBackground);
+  color: var(--vscode-list-hoverForeground);
+}
+
+/* ========== Tree/Nested Collections ==========*/
+.collection-item {
+  font-size: 14px;
+  color: var(--vscode-foreground);
+  background: transparent;
+  border-radius: 6px;
+  padding: 6px 8px 6px 4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: background 0.18s;
+  position: relative;
+  font-weight: bold;
+  margin-bottom: 2px;
+}
+.collection-item .collection-chevron {
+  font-size: 16px;
+  color: var(--vscode-descriptionForeground);
+  margin-right: 2px;
+  transition: transform 0.18s;
+  cursor: pointer;
+}
+.collection-item .collection-folder-icon {
+  display: flex;
+  align-items: center;
+  margin-right: 2px;
+  filter: drop-shadow(0 1px 2px rgba(59,130,246,0.12));
+}
+.collection-item .collection-name {
+  font-weight: bold;
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.collection-item .collection-menu-btn {
+  margin-left: auto;
+  background: none;
+  border: none;
+  color: var(--vscode-descriptionForeground);
+  font-size: 16px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.15s;
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+.collection-item:hover .collection-menu-btn {
+  opacity: 1;
+}
+.collection-item:hover {
+  background: var(--vscode-list-hoverBackground);
+  color: var(--vscode-list-hoverForeground);
+}
+.collection-requests {
+  list-style: none;
+  margin: 0 0 0 22px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  position: relative;
+}
+.collection-request-item {
+  position: relative;
+  padding-left: 18px;
+}
+.collection-request-item.with-connector::before {
+  content: '';
+  position: absolute;
+  left: 7px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--vscode-sideBarSectionHeader-border, #23272e);
+  border-radius: 1px;
+}
+.collection-connector {
+  position: absolute;
+  left: 8px;
+  top: 24px;
+  bottom: 0;
+  width: 2px;
+  background: var(--vscode-sideBarSectionHeader-border, #23272e);
+  z-index: 0;
+  border-radius: 1px;
+  display: none;
+}
+.collection-item:not(:last-child) .collection-connector {
+  display: block;
+}
+.section-items .collection-item:not(:last-child) {
+  border-bottom: 1px solid var(--vscode-sideBarSectionHeader-border, #23272e);
+}
+
+/* Chevron animation for expand/collapse */
+.collection-item .collection-chevron.codicon-chevron-down {
+  transform: rotate(0deg);
+}
+.collection-item .collection-chevron.codicon-chevron-right {
+  transform: rotate(-90deg);
+}
+
+/* ========== Section Items ==========*/
+.section-items {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  transition: max-height 0.3s ease;
+  overflow: hidden;
+}
+.section.collapsed .section-items {
+  max-height: 0 !important;
+  overflow: hidden;
+  padding: 0;
+}
+
+/* ========== Individual Item ==========*/
+.section-items li {
+  font-size: 13px;
+  color: var(--vscode-foreground);
+  background-color: transparent;
+  border-radius: 4px;
+  padding: 5px 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.section-items li:hover {
+  background-color: var(--vscode-list-hoverBackground);
+  color: var(--vscode-list-hoverForeground);
+}
+.section-items li.active {
+  background-color: var(--vscode-list-activeSelectionBackground);
+  color: var(--vscode-list-activeSelectionForeground);
+}
+
+/* ========== Request Method Styling ==========*/
+.method {
+  font-weight: bold;
+  width: 45px;
+  display: inline-block;
+  font-size: 11px;
+  text-align: right;
+}
+.method.GET {
+  color: var(--vscode-terminal-ansiGreen);
+}
+.method.POST {
+  color: var(--vscode-terminal-ansiYellow);
+}
+.method.PUT {
+  color: var(--vscode-terminal-ansiBlue);
+}
+.method.DELETE {
+  color: var(--vscode-terminal-ansiRed);
+}
+.method.PATCH {
+  color: var(--vscode-terminal-ansiCyan);
+}
+
+/* ========== Request URL ==========*/
+.url {
+  flex-grow: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 13px;
+  color: var(--vscode-list-inactiveSelectionForeground);
+}
+
+/* ========== Context Menu ==========*/
+.context-menu {
+  position: absolute;
+  background-color: var(--vscode-menu-background);
+  border: 1px solid var(--vscode-menu-border);
+  border-radius: 6px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+  z-index: 999;
+  min-width: 160px;
+  overflow: hidden;
+  display: none;
+  flex-direction: column;
+}
+.context-menu.visible {
+  display: flex;
+}
+.context-menu-item {
+  padding: 8px 12px;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  color: var(--vscode-menu-foreground);
+  transition: background 0.2s ease;
+}
+.context-menu-item:hover {
+  background-color: var(--vscode-menu-selectionBackground);
+  color: var(--vscode-menu-selectionForeground);
+}
+.context-menu-separator {
+  height: 1px;
+  background-color: var(--vscode-menu-separatorBackground);
+  margin: 4px 0;
+}
+
+/* ========== Empty State Placeholder ==========*/
+.placeholder {
+  font-size: 13px;
+  text-align: center;
+  color: var(--vscode-descriptionForeground);
+  padding: 24px 8px;
+  opacity: 0.8;
+}
+.placeholder i {
+  display: block;
+  font-size: 36px;
+  margin-bottom: 10px;
+  color: var(--vscode-icon-foreground);
+}
+
+/* ========== Scrollbar Styling ==========*/
+.sidebar-root::-webkit-scrollbar {
+  width: 6px;
+}
+.sidebar-root::-webkit-scrollbar-thumb {
+  background-color: var(--vscode-scrollbarSlider-background);
+  border-radius: 4px;
+}
+.sidebar-root::-webkit-scrollbar-thumb:hover {
+  background-color: var(--vscode-scrollbarSlider-hoverBackground);
+}
+
+/* ========== Badge & Counter ==========*/
+.badge {
+  background-color: var(--vscode-badge-background);
+  color: var(--vscode-badge-foreground);
+  font-size: 11px;
+  padding: 2px 6px;
+  border-radius: 10px;
+  margin-left: auto;
+}
+
+/* ========== Filter Input ==========*/
+.filter-input {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--vscode-input-border);
+  background-color: var(--vscode-input-background);
+  color: var(--vscode-input-foreground);
+  font-size: 13px;
+}
+.filter-input::placeholder {
+  color: var(--vscode-input-placeholderForeground);
+}
+.filter-input:focus {
+  outline: 1px solid var(--vscode-focusBorder);
+}
+
+/* ========== Animation Keyframes ==========*/
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.fade-in {
+  animation: fade-in 0.2s ease-out;
+}
+
+/* ========== Responsive Support ==========*/
+@media (max-height: 600px) {
+  .sidebar-root {
+    padding: 6px;
+    gap: 10px;
+  }
+
+  .profile-section,
+  .new-request-btn {
+    padding: 6px;
+    font-size: 13px;
+  }
+
+  .section-header {
+    font-size: 11px;
+  }
+}
+
+/* ========== Modern Grouped History ==========*/
+.history-section {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+.history-section.collapsed .history-groups,
+.history-section.collapsed .history-filter {
+  display: none;
+}
+.section-header {
+  cursor: pointer;
+  user-select: none;
+}
+.section-header .codicon-chevron-down {
+  transition: transform 0.2s;
+  margin-right: 6px;
+}
+.section.collapsed > .section-header .codicon-chevron-down,
+.history-section.collapsed > .section-header .codicon-chevron-down {
+  transform: rotate(-90deg);
+}
+.history-filter {
+  margin: 8px 8px 0 8px;
+  font-size: 13px;
+  border-radius: 6px;
+  border: 1px solid var(--vscode-input-border);
+  background: var(--vscode-input-background);
+  color: var(--vscode-input-foreground);
+  padding: 10px 10px;
+  outline: none;
+  transition: border 0.2s;
+}
+.history-filter:focus {
+  border: 1.5px solid var(--vscode-focusBorder);
+}
+.history-group {
+  margin-bottom: 8px;
+}
+.history-group-header {
+  font-size: 12px;
+  font-weight: bold;
+  color: var(--vscode-descriptionForeground);
+  margin: 8px 0 4px 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+}
+.history-group-header .codicon-chevron-down {
+  margin-right: 6px;
+  font-size: 14px;
+  transition: transform 0.2s;
+}
+.history-group.collapsed > .history-group-header .codicon-chevron-down {
+  transform: rotate(-90deg);
+}
+.history-group.collapsed > .history-items {
+  display: none;
+}
+.history-items {
+  list-style: none;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+.history-modern-item {
+  display: flex;
+  align-items: center;
+  /* gap: 4px; */
+  padding: 3px 8px 6px 0;
+  border-radius: 6px;
+  background: none;
+  position: relative;
+  cursor: pointer;
+  transition: background 0.15s;
+  font-size: 13px;
+}
+.history-modern-item:hover {
+  background: var(--vscode-list-hoverBackground);
+}
+.method-badge-text {
+  font-weight: bold;
+  font-size: 11px;
+  min-width: 38px;
+  text-align: right;
+  border-radius: 4px;
+  padding: 2px 8px;
+  margin-right: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background: none;
+  display: inline-block;
+}
+.method-get { color: #22c55e; background: none; }
+.method-post { color: #eab308; background: none; margin-left: 7px; }
+.method-put { color: #3b82f6; background: none; margin-left: 7px; }
+.method-delete { color: #ef4444; background: none; margin-left: 7px; }
+.method-patch { color: #06b6d4; background: none; margin-left: 7px; }
+.method-head { color: #a855f7; background: none; margin-left: 7px; }
+.method-options { color: #f59e42; background: none; margin-left: 7px; }
+
+.history-url {
+  flex: 1 1 auto;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--vscode-foreground);
+  font-size: 12px;
+}
+.history-status {
+  font-size: 12px;
+  font-weight: bold;
+  min-width: 36px;
+  text-align: center;
+  border-radius: 4px;
+  padding: 2px 8px;
+  margin-left: 8px;
+  display: inline-block;
+}
+.status-success {
+  background: #22c55e22;
+  color: #22c55e;
+}
+.status-error {
+  background: #ef444422;
+  color: #ef4444;
+}
+.status-other {
+  background: #eab30822;
+  color: #eab308;
+}
+.history-modern-item.with-connector::after {
+  content: '';
+  position: absolute;
+  left: 10px;
+  top: 32px;
+  width: 2px;
+  height: calc(100% - 32px);
+  background: var(--vscode-sideBarSectionHeader-border, #23272e);
+  border-radius: 1px;
+  z-index: 0;
+}
+
+.history-delete-btn {
+  background: none;
+  border: none;
+  color: var(--vscode-descriptionForeground);
+  cursor: pointer;
+  font-size: 14px;
+  margin-left: 8px;
+  border-radius: 4px;
+  padding: 2px 4px;
+  transition: background 0.15s, color 0.15s, opacity 0.15s;
+  opacity: 0;
+  pointer-events: none;
+}
+.history-modern-item:hover .history-delete-btn {
+  opacity: 1;
+  pointer-events: auto;
+}
+.section-action-btn.codicon-trash {
+  background: none;
+  border: none;
+  color: var(--vscode-descriptionForeground);
+  cursor: pointer;
+  font-size: 15px;
+  margin-left: 8px;
+  border-radius: 4px;
+  padding: 2px 4px;
+  transition: background 0.15s, color 0.15s, opacity 0.15s;
+  opacity: 0;
+  pointer-events: none;
+}
+.history-group-header:hover .section-action-btn.codicon-trash {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.codicon-list-unordered:before {
+    position: relative;
+    top: 3px;
+    right: 8px;
+}
+
+/* ========== Collections Section ==========*/
+.collection-item {
+  font-size: 14px;
+  color: var(--vscode-foreground);
+  background: transparent;
+  border-radius: 6px;
+  padding: 6px 8px 6px 4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: background 0.18s;
+  position: relative;
+  font-weight: bold;
+  margin-bottom: 2px;
+}
+.collection-item .collection-name {
+  font-weight: bold;
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.collection-item .collection-menu-btn {
+  margin-left: auto;
+  background: none;
+  border: none;
+  color: var(--vscode-descriptionForeground);
+  font-size: 16px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.15s;
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+.collection-item:hover .collection-menu-btn {
+  opacity: 1;
+}
+.collection-item:hover {
+  background: var(--vscode-list-hoverBackground);
+  color: var(--vscode-list-hoverForeground);
+}
+.collection-requests {
+  list-style: none;
+  margin: 0 0 0 22px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.collection-requests li {
+  font-size: 13px;
+  font-weight: normal;
+  color: var(--vscode-foreground);
+  background: transparent;
+  border-radius: 4px;
+  padding: 4px 6px 4px 0;
+  margin-bottom: 1px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: background 0.18s;
+  position: relative;
+  margin-left: 2px;
+}
+.collection-requests li:hover {
+  background: var(--vscode-list-hoverBackground);
+  color: var(--vscode-list-hoverForeground);
+}
+/* Divider between collections */
+.section-items .collection-item:not(:last-child) {
+  border-bottom: 1px solid var(--vscode-sideBarSectionHeader-border, #23272e);
+}
+
+/* ========== Collection Context Menu ==========*/
+.collection-context-menu {
+  min-width: 180px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+  border-radius: 8px;
+  padding: 4px 0;
+  background: var(--vscode-menu-background);
+  border: 1px solid var(--vscode-menu-border);
+  z-index: 1001;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  animation: fade-in 0.18s;
+  left: 91px !important;
+}
+.collection-context-menu .context-menu-item {
+  padding: 10px 18px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  color: var(--vscode-menu-foreground);
+  background: none;
+  outline: none;
+  border: none;
+  transition: background 0.18s, color 0.18s;
+}
+.collection-context-menu .context-menu-item:focus {
+  background: var(--vscode-menu-selectionBackground);
+  color: var(--vscode-menu-selectionForeground);
+}
+.collection-context-menu .context-menu-item:hover {
+  background: var(--vscode-menu-selectionBackground);
+  color: var(--vscode-menu-selectionForeground);
+}
+.collection-context-menu .context-menu-item .codicon {
+  font-size: 16px;
+  margin-right: 6px;
+}
+
+/* Boxed Collections Section */
+.collections-section {
+  background: var(--vscode-sideBarSectionHeader-background, #181a20);
+  border-radius: 4px;
+  margin: 16px 0 0 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  border: 1px solid var(--vscode-sideBarSectionHeader-border, #23272e);
+  padding-bottom: 8px;
+}
+.collections-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px 6px 12px;
+  border-bottom: 1px solid var(--vscode-sideBarSectionHeader-border, #23272e);
+}
+.collections-add-btn {
+  background: none;
+  color: #ffffffc2;
+  border: none;
+  border-radius: 6px;
+  font-size: 18px;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.18s, box-shadow 0.18s;
+}
+.collections-add-btn:hover {
+  background: #f5252500;
+  box-shadow: 0 2px 4px rgba(59,130,246,0.18);
+  color: #009fff;
+  font-weight: bold;
+}
+.collections-filter-input {
+  flex: 1;
+  background: var(--vscode-input-background, #23272e);
+  color: var(--vscode-input-foreground, #fff);
+  border: 1px solid var(--vscode-input-border, #23272e);
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 14px;
+  outline: none;
+  transition: border 0.15s;
+}
+.collections-filter-input:focus {
+  border: 1.5px solid #3b82f6;
+}
+
+.collections-list {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 0;
+}
+.collection-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 12px 8px 12px;
+  font-size: 13px;
+  font-weight: bold;
+  color: var(--vscode-foreground);
+  border-radius: 6px;
+  position: relative;
+  cursor: pointer;
+  margin-bottom: 2px;
+  background: transparent;
+  transition: background 0.18s, color 0.18s;
+}
+.collection-row:hover {
+  background: var(--vscode-list-hoverBackground);
+  color: var(--vscode-list-hoverForeground);
+}
+.collection-row .collection-chevron {
+  font-size: 16px;
+  color: var(--vscode-descriptionForeground);
+  margin-right: 2px;
+  transition: transform 0.18s;
+  cursor: pointer;
+}
+.collection-row .collection-menu-btn {
+  margin-left: auto;
+  background: none;
+  border: none;
+  color: var(--vscode-descriptionForeground);
+  font-size: 16px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.15s;
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+.collection-row:hover .collection-menu-btn {
+  opacity: 1;
+}
+.collection-row .collection-connector {
+  position: absolute;
+  left: 18px;
+  top: 32px;
+  bottom: -8px;
+  width: 2px;
+  background: var(--vscode-sideBarSectionHeader-border, #23272e);
+  z-index: 0;
+  border-radius: 1px;
+  display: none;
+  pointer-events: none;
+}
+.collection-row:hover .collection-connector {
+  display: block;
+}
+.collection-row .collection-name {
+  font-weight: bold;
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.collection-requests-list {
+  list-style: none;
+  margin: 0 0 0 32px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.collection-request-row {
+  font-size: 13px;
+  font-weight: normal;
+  color: var(--vscode-foreground);
+  background: transparent;
+  border-radius: 4px;
+  padding: 4px 6px 4px 0;
+  margin-bottom: 1px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: background 0.18s;
+  position: relative;
+  margin-left: 2px;
+}
+.collection-request-row:hover {
+  background: var(--vscode-list-hoverBackground);
+  color: var(--vscode-list-hoverForeground);
+}
+/* Chevron animation for expand/collapse */
+.collection-row .collection-chevron.codicon-chevron-down {
+  transform: rotate(0deg);
+}
+.collection-row .collection-chevron.codicon-chevron-right {
+  transform: rotate(-90deg);
+}
+
+/* --- Collections Tree View Styles --- */
+.collections-group {
+  margin-bottom: 8px;
+  border-radius: 6px;
+  background: none;
+  border: none;
+}
+.collections-group-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--vscode-foreground);
+  padding: 7px 8px 7px 14px;
+  cursor: pointer;
+  border-radius: 6px 6px 0 0;
+  background: var(--vscode-sideBarSectionHeader-background, #23272e);
+  position: relative;
+  transition: background 0.15s;
+}
+.collections-group-header:hover {
+  background: var(--vscode-list-hoverBackground);
+}
+.collections-group-header .codicon-chevron-down {
+  transition: transform 0.2s;
+  font-size: 16px;
+}
+.collections-group.collapsed > .collections-group-header .codicon-chevron-down {
+  transform: rotate(-90deg);
+}
+.collection-menu-btn {
+  margin-left: auto;
+  background: none;
+  border: none;
+  color: var(--vscode-descriptionForeground);
+  font-size: 16px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.15s;
+  padding: 2px 4px;
+  border-radius: 4px;
+  position: relative;
+  z-index: 2;
+}
+.collections-group-header:hover .collection-menu-btn {
+  opacity: 1;
+}
+.collections-requests-list {
+  list-style: none;
+  margin: 0 0 0 24px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.collection-request-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 3px 5px 7px 0px;
+  border-radius: 5px;
+  font-size: 11.5px;
+  color: var(--vscode-foreground);
+  background: none;
+  cursor: pointer;
+  transition: background 0.13s, color 0.13s;
+  position: relative;
+  width: 85%;
+  margin-left: 7px;
+}
+.collection-request-row:hover {
+  background: var(--vscode-list-hoverBackground);
+  color: var(--vscode-list-hoverForeground);
+}
+.collection-request-row .request-method {
+  font-weight: bold;
+  font-size: 12px;
+  min-width: 44px;
+  text-align: right;
+}
+.method-get { color: #22c55e; }
+.method-post { color: #eab308; }
+.method-put { color: #3b82f6; }
+.method-delete { color: #ef4444; }
+.method-patch { color: #06b6d4; }
+.method-head { color: #a855f7; }
+.method-options { color: #f59e42; }
+.collections-group.collapsed > .collections-requests-list {
+  display: none;
+}
+
+/* Collection request row delete button */
+.request-delete-btn {
+  background: none;
+  border: none;
+  color: var(--vscode-descriptionForeground);
+  cursor: pointer;
+  font-size: 14px;
+  margin-left: 8px;
+  border-radius: 4px;
+  padding: 2px 4px;
+  transition: background 0.15s, color 0.15s, opacity 0.15s;
+  opacity: 0;
+  pointer-events: none;
+}
+.collection-request-row:hover .request-delete-btn {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.section-action-btn[title="New Collection"] {
+    position: relative;
+    left: 85px;
+}
+
+/* Ensure method badge colors are consistent */
+.request-method.method-get { color: #22c55e; }
+.request-method.method-post { color: #eab308; }
+.request-method.method-put { color: #3b82f6; }
+.request-method.method-delete { color: #ef4444; }
+.request-method.method-patch { color: #06b6d4; }
+.request-method.method-head { color: #a855f7; }
+.request-method.method-options { color: #f59e42; }
+
+/* ========== Request Context Menu ==========*/
+.request-context-menu {
+  min-width: 170px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+  border-radius: 8px;
+  padding: 4px 0;
+  background: var(--vscode-sideBar-background, #23272e);
+  border: 1px solid var(--vscode-sideBarSectionHeader-border, #23272e);
+  z-index: 9999; /* <-- Make this very high */
+  position: fixed; /* <-- Use fixed for dropdowns attached to viewport */
+  display: block;
+}
+.request-context-menu .context-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: 3px;
+  font-size: 1em;
+  transition: background 0.1s;
+  color: var(--vscode-foreground);
+}
+.request-context-menu .context-menu-item:hover,
+.request-context-menu .context-menu-item:focus {
+  background: var(--vscode-list-hoverBackground);
+  color: var(--vscode-list-hoverForeground);
+  outline: none;
+}
+
+/* Request row three-dots menu button */
+.request-menu-btn {
+  margin-left: auto;
+  background: none;
+  border: none;
+  color: var(--vscode-descriptionForeground);
+  font-size: 16px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.15s;
+  padding: 2px 4px;
+  border-radius: 4px;
+  position: relative;
+  z-index: 2;
+}
+.collection-request-row:hover .request-menu-btn {
+  opacity: 1;
+}
+
+.request-rename-input {
+  border: none;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.301);
+  color: white;
+}
+
+.collection-group-connector {
+  position: absolute;
+  left: 21px;
+  width: 2px;
+  background: var(--vscode-editorWidget-border, #444);
+  opacity: 0;
+  z-index: 0;
+  transition: opacity 0.2s;
+}
+.collection-group-connector.connector-hover {
+  opacity: 0.25;
+}
+/* Position the connector relative to the container */
+.collections-groups {
+  position: relative;
+}
+
+/* Add margin to group for spacing */
+.collections-group {
+  margin-bottom: 4px;
+  position: relative;
+}
+
+.history-group-connector {
+  position: absolute;
+  left: 14px;
+  width: 2px;
+  background: var(--vscode-editorWidget-border, #444);
+  opacity: 0;
+  z-index: 0;
+  transition: opacity 0.2s;
+  margin-top: 16px;
+  margin-bottom: 0px;
+  height: calc(100% - 30px);
+  max-height: 100%;
+}
+.history-groups {
+  overflow: hidden;
+}
+.history-group-connector.connector-hover {
+  opacity: 0.25;
+}
+
+.collection-folder-row {
+  margin-left: 32px;
+  width: 73%;
+  padding-top: 5px;
+}
+
+/* Enhanced Treeview Styles */
+.folder-group {
+  position: relative;
+}
+
+.folder-tree-structure {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.folder-tree-structure:hover {
+  background-color: var(--vscode-list-hoverBackground);
+}
+
+.folder-chevron {
+  font-size: 14px;
+  color: var(--vscode-descriptionForeground);
+  transition: transform 0.2s ease;
+}
+
+.folder-group.collapsed .folder-chevron {
+  transform: rotate(-90deg);
+}
+
+.folder-name {
+  font-weight: 500;
+  color: var(--vscode-foreground);
+  flex: 1;
+}
+
+.folder-connector-line {
+  position: absolute;
+  left: 10px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--vscode-tree-indentGuidesStroke);
+  transition: height 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.request-tree-structure {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0px 12px;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.request-tree-structure:hover {
+  background-color: var(--vscode-list-hoverBackground);
+}
+
+.request-connector-line {
+  position: absolute;
+  left: -10px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--vscode-tree-indentGuidesStroke);
+  transition: height 0.2s ease;
+}
+
+.folder-request-row {
+  position: relative;
+}
+
+.folder-request-row .request-method {
+  margin-right: 10px;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.folder-request-row .request-name {
+  flex: 1 1 auto;
+  min-width: 0;
+  margin-left: 0;
+}
+
+.folder-request-row .request-menu-btn {
+  opacity: 0;
+  transition: opacity 0.15s;
+  background: none;
+  border: none;
+  color: var(--vscode-descriptionForeground);
+  cursor: pointer;
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
+.folder-request-row:hover .request-menu-btn {
+  opacity: 1;
+}
+
+/* Treeview connector animations */
+.folder-connector-line,
+.request-connector-line {
+  opacity: 0.6;
+  transition: opacity 0.2s ease, height 0.2s ease;
+}
+
+.folder-group:hover .folder-connector-line,
+.folder-request-row:hover .request-connector-line {
+  opacity: 1;
+}
+
+/* Nested folder styling */
+.folder-group[data-level="1"] .folder-tree-structure {
+  padding-left: 32px;
+}
+
+.folder-group[data-level="2"] .folder-tree-structure {
+  padding-left: 52px;
+}
+
+.folder-group[data-level="3"] .folder-tree-structure {
+  padding-left: 72px;
+}
+
+/* Request indentation based on folder level */
+.folder-request-row .request-tree-structure {
+  padding-left: 32px;
+}
+
+.folder-group[data-level="1"] .folder-request-row .request-tree-structure {
+  padding-left: 52px;
+}
+
+.folder-group[data-level="2"] .folder-request-row .request-tree-structure {
+  padding-left: 72px;
+}
+
+.folder-group[data-level="3"] .folder-request-row .request-tree-structure {
+  padding-left: 92px;
+}
+
+/* Input field styles for inline editing */
+.inline-edit-input {
+  margin-left: 8px;
+  font-size: 15px;
+  background: var(--vscode-input-background);
+  color: var(--vscode-foreground);
+  border: 1px solid var(--vscode-input-border);
+  border-radius: 4px;
+  padding: 2px 6px;
+  width: calc(100% - 40px);
+}
+
+/* Input field styles for inline adding */
+.inline-add-input {
+  margin-left: 2px;
+  font-size: 14px;
+  background: transparent;
+  color: var(--vscode-foreground);
+  border: 1px solid #292d32;
+  border-radius: 2px;
+  padding: 3px 6px;
+  width: calc(100% - 60px);
+}
