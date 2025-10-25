@@ -156,7 +156,7 @@
                 };
 
                 if (!config.apiKey) {
-                    showTestResult('❌ Please enter your API key first', 'error');
+                    showTestResult('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" aria-hidden="false" role="img" focusable="false"><title>Close / Error</title><g fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18"/><path d="M6 6l12 12"/></g></svg> Please enter your API key first', 'error');
                     return;
                 }
 
@@ -215,7 +215,7 @@
     function showTestResult(message, type) {
         const testResult = document.getElementById('test-result');
         if (testResult) {
-            testResult.textContent = message;
+            testResult.innerHTML = message;
             testResult.className = `test-result ${type}`;
             testResult.classList.remove('hidden');
         }

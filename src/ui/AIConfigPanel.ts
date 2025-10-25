@@ -80,7 +80,7 @@ export class AIConfigPanel {
             <body>
                 <div class="ai-config-container">
                     <div class="ai-config-header">
-                        <h1>🤖 AI-Powered Request Configuration</h1>
+                        <h1>AI-Powered Request Configuration</h1>
                         <p>Configure your AI settings to generate cURL commands from natural language prompts</p>
                     </div>
 
@@ -91,7 +91,7 @@ export class AIConfigPanel {
                             <div class="custom-dropdown" id="provider-dropdown" data-selected-value="huggingface">
                                 <div class="dropdown-selected" tabindex="0">
                                     <span id="selected-provider-text">Hugging Face</span>
-                                    <span class="dropdown-arrow">▼</span>
+                                    <span class="dropdown-arrow"></span>
                                 </div>
                                 <ul class="dropdown-menu hidden">
                                     <li data-value="huggingface" class="active">
@@ -108,7 +108,7 @@ export class AIConfigPanel {
                             <div class="custom-dropdown" id="model-dropdown" data-selected-value="openai/gpt-oss-120b">
                                 <div class="dropdown-selected" tabindex="0">
                                     <span id="selected-model-text">openai/gpt-oss-120b</span>
-                                    <span class="dropdown-arrow">▼</span>
+                                    <span class="dropdown-arrow"></span>
                                 </div>
                                 <ul class="dropdown-menu hidden">
                                     <li data-value="openai/gpt-oss-120b" class="active">
@@ -228,8 +228,8 @@ export class AIConfigPanel {
                 payload: {
                     success: isValid,
                     message: isValid
-                        ? '✅ Configuration test successful!'
-                        : '❌ Configuration test failed. Please check your API key.'
+                        ? '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" aria-hidden="false" role="img" focusable="false"><title>Check mark</title><g fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></g></svg> Configuration test successful!'
+                        : '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" aria-hidden="false" role="img" focusable="false"><title>Close / Error</title><g fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18"/><path d="M6 6l12 12"/></g></svg> Configuration test failed. Please check your API key.'
                 }
             });
         } catch (error: any) {
@@ -238,7 +238,7 @@ export class AIConfigPanel {
                 command: 'testConfigResult',
                 payload: {
                     success: false,
-                    message: `❌ Test failed: ${error.message}`
+                    message: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" aria-hidden="false" role="img" focusable="false"><title>Close / Error</title><g fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18"/><path d="M6 6l12 12"/></g></svg> Test failed: ${error.message}`
                 }
             });
         }
